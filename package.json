@@ -12,11 +12,11 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://bedquest@bitbucket.org/ITPL_NODEJS_PROJECTS/ms_backend.git"
+        "url": "git+https://test.git"
     },
-    "author": "Indware Technologies",
+    "author": "Sk Samidul Islam",
     "license": "ISC",
-    "homepage": "https://bitbucket.org/ITPL_NODEJS_PROJECTS/edu_api/src/master/",
+    "homepage": "https://test.git",
     "dependencies": {
         "@azure/identity": "^2.0.1",
         "@azure/storage-blob": "^12.8.0",
