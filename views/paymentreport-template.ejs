@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brandwar Payment Report</title>
+
+<style>
+    .table {
+        width: 100%;
+        font-size: 10px;
+        font-family: arial;
+        border: 0;
+    }
+    
+    .table tr:nth-child(even) {
+        background-color: #fff;
+    }
+    
+    .table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+    
+    .table tr td {
+        padding: 2px;
+        border: 1px solid #666;
+    }
+    
+    th,
+    td,
+    table {
+        border-collapse: collapse;
+    }
+</style>
+
+</head>
+
+<body>
+    <p style="background:#9a0f1f; color:#fff; padding:3px; margin: 0;">Date:
+        <%= new Date().toLocaleDateString();%>
+    </p>
+    <table class="table" border="0">
+        <tr style="font-weight:700;">
+            <td>Payout ID</td>
+            <td>Game ID</td>
+            <td>Source A/C</td>
+            <td>Amount</td>
+            <td>Currency</td>
+            <td>Mode</td>
+            <td>Purpose</td>
+            <td>Beneficiary ID</td>
+            <td>Beneficiary A/C</td>
+            <td>Beneficiary Name</td>
+            <td>Transaction At</td>
+            <td>Processing At</td>
+        </tr>
+        <% paymentList.forEach(list=> {%>
+            <tr>
+                <td>
+                    <%= list.transactionId %>
+                </td>
+                <td>
+                    Brandwars Match
+                </td>
+                <td>
+                    031705004170
+                </td>
+                <td>
+                    <%= list.amount %>
+                </td>
+                <td>
+                    INR
+                </td>
+                <td>
+                    NEFT / IMPS
+                </td>
+                <td>
+                    Winning
+                </td>
+                <td>
+                    <%= list.razorpayFundAccountId %>
+                </td>
+                <td>
+                    <%= list.user_kyc.accountNumber %>
+                </td>
+                <td>
+                    <%= list.players.name %>
+                </td>
+                <td>
+                    <%= new Date(list.createdDate).toLocaleString() %>
+                </td>
+                <td>
+                    <%= new Date(list.modifiedDate).toLocaleString() %>
+                </td>
+            </tr>
+            <% });%>
+    </table>
+</body>
+
+</html>

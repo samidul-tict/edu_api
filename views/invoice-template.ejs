@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <title>Brand Wars Invoice</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0.5px;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+        }
+        
+        .invoice-card {
+            display: flex;
+            flex-direction: column;
+            padding: 2em;
+            margin: 1% auto;
+            min-height: 25em;
+            width: 600px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 10px 30px 5px rgba(0, 0, 0, 0.15);
+        }
+        
+        .invoice-card>div {
+            margin: 5px 0;
+        }
+        
+        .invoice-title {
+            border-top: 0.5px dashed #666 !important;
+            padding-top: 10px;
+            width: 100%;
+            display: inline-block;
+        }
+        
+        .invoice-title #date {
+            margin-top: 2em;
+            font-size: 12px;
+        }
+        
+        .invoice-title #main-title {
+            float: left;
+            margin-top: 1.3em;
+        }
+        
+        .qr {
+            float: right;
+        }
+        
+        .invoice-title #main-title h4 {
+            letter-spacing: 2.5px;
+        }
+        
+        .invoice-title span {
+            color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .invoice-details {
+            border-top: 1px dashed #666 !important;
+            border-bottom: 1px dashed #666 !important;
+            align-items: center;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .invoice-table thead tr td {
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: #000;
+            padding: 8px 0;
+        }
+        
+        .invoice-table thead tr td:nth-last-child(1),
+        .row-data td:nth-last-child(1),
+        .calc-row td:nth-last-child(1) {
+            text-align: right;
+        }
+        
+        .invoice-table tbody tr td {
+            padding: 8px 0;
+            letter-spacing: 0;
+            color: #676767;
+        }
+        
+        .invoice-table .row-data #unit {
+            text-align: center;
+        }
+        
+        .invoice-table .row-data span {
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .invoice-footer {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .invoice-footer #later {
+            margin-right: 5px;
+        }
+        
+        .btn {
+            border: none;
+            padding: 5px 0px;
+            background: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            outline: none;
+        }
+        
+        .btn.btn-secondary {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn.btn-primary {
+            color: var(--primary-color);
+        }
+        
+        .btn#later {
+            margin-right: 2em;
+        }
+        
+        .top-area {
+            text-align: center;
+        }
+        
+        .top-left {
+            float: left;
+        }
+        
+        .top-right {
+            float: right;
+        }
+        
+        .top {
+            width: 100%;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+</head>
+
+<body>
+
+    <div class="invoice-card">
+        <div class="top">
+            <div class="top-left">
+                <h2>Tax Invoice</h2>
+                <h3 style="text-transform: uppercase;">
+                    <%= invoiceData.playerName %>
+                </h3>
+            </div>
+            <div class="top-right">
+                <img src="<%= invoiceData.imageFileLogo %>" width="80px" alt="logo">
+            </div>
+        </div>
+
+
+
+        <div class="invoice-title" style="border-top: 1px dashed #666 !important;">
+            <div id="main-title">
+                <h5>BRAND WARS PRIVATE LIMITED<br> 181 BLOCK G, NEW ALIPORE, KOLKATA 700053, 1ST FLOOR</h5>
+                <h5>GST NO. 19AAJCB3239N1Z7<br> PLACE OF ORIGIN OF INVOICE : KOLKATA(WEST BENGAL)<br>
+                </h5>
+                <h5>INVOICE NO. <span><%= invoiceData.transactionId %></span></h5>
+                <h5>TRANSATION ID. <span><%= invoiceData.transactionId %></span></h5>
+                <span id="date">DATE : <%= invoiceData.createdDate %></span>
+            </div>
+            <div class="qr">
+                <img src="<%= invoiceData.imageFileQr %>" width="150px" alt="qr">
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="invoice-details" style="border-top: 1px dashed #666 !important; border-bottom: 1px dashed #666 !important;">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <td>DESCRIPTION</td>
+                        <td>AMOUNT (INR)</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr class="row-data" style="border-top: 2px solid #666;">
+                        <td>Aggregator / Platform Fee<br> HSN CODE : 998439</td>
+                        <td>₹
+                            <%= invoiceData.playerPlatformFeeNumber %>
+                        </td>
+                    </tr>
+                    <tr class="row-data">
+                        <td>Less Discount(offers)</td>
+                        <td>₹ 0.00
+                        </td>
+                    </tr>
+                    <tr class="row-data">
+                        <td>Net Platform Fees (Inclusive of GST)</td>
+                        <td>₹
+                            <%= invoiceData.playerPlatformFeeNumber %>
+                        </td>
+                    </tr>
+                    <tr class="row-data">
+                        <td>TOTAL TAXABLE VALUE - Platform Fee*</td>
+                        <td>₹
+                            <%= invoiceData.platformFeeWithoutTax %>
+                        </td>
+                    </tr>
+                    <% if (invoiceData.playerState=="West Bengal" ) { %>
+                        <tr class="row-data">
+                            <td><span>SGST @9.0%</span></td>
+                            <td>₹
+                                <%= invoiceData.sgst %>
+                            </td>
+                        </tr>
+                        <tr class="row-data">
+                            <td><span>CGST @9.0%</span></td>
+                            <td>₹
+                                <%= invoiceData.cgst %>
+                            </td>
+                        </tr>
+                        <% } %>
+                            <% if (invoiceData.playerState!="West Bengal" ) { %>
+                                <tr class="row-data">
+                                    <td><span>IGST @18.0%</span></td>
+                                    <td>₹
+                                        <%= invoiceData.igst %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <tr class="row-data">
+                                        <td>TOTAL</td>
+                                        <td>₹
+                                            <%= invoiceData.playerPlatformFeeNumber %>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr>
+                                        <td colspan="2">Amount in words – ₹
+                                            <%= invoiceData.playerPlatformFee %>
+                                        </td>
+                                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h6 style="margin: 10px 0;">Please refer to <a href="">Terms and Conditions</a> page for any reference or write to us on <a href="mailto:support@brandwars.com">support@brandwars.com</a></h6>
+
+
+    </div>
+
+</body>
+
+</html>

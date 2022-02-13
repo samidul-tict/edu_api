@@ -1,0 +1,15 @@
+{
+    "jwtPrivateKey": "",
+    "dbUser": "",
+    "dbPass": "",
+    "apiKey": "",
+    "apiKeyQuantel": "",
+    "razorpayKeyId": "",
+    "razorpaySecret": "",
+    "awsAccessKeyId": "",
+    "awsSecretAccessKey": "",
+    "zoopApikey": "",
+    "zoopAgencyId": "",
+    "dataYugeKey": "",
+    "bucketName": ""
+}

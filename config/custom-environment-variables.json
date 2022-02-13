@@ -1,0 +1,15 @@
+{
+    "jwtPrivateKey": "edw_jwtPrivateKey",
+    "dbUser": "edw_db_user",
+    "dbPass": "edw_db_pass",
+    "azureAccessKeyId": "edw_azure_accesskey_id",
+    "azureSecretAccessKey": "edw_azure_secret_access_key",
+    "apiKey": "edw_apiKey",
+    "apiKeyQuantel": "edw_apiKeyQuantel",
+    "razorpayKeyId": "edw_razorpay_key",
+    "razorpaySecret": "edw_razorpay_secret",
+    "zoopApikey": "edw_zoop_qt_api_key",
+    "zoopAgencyId": "edw_zoop_qt_agency_id",
+    "dataYugeKey": "edw_operator_lookup_key",
+    "bucketName": "edw_bucket_name"
+}

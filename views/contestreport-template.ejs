@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, shrink-to-fit=9">
+<title>Brandwar Contest Report</title>
+
+<style>
+    .table {
+        width: 100%;
+        font-size: 10px;
+        font-family: arial;
+        border: 0;
+    }
+    
+    .table tr:nth-child(even) {
+        background-color: #fff;
+    }
+    
+    .table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+    
+    .table tr td {
+        padding: 2px;
+        border: 1px solid #666;
+    }
+    
+    th,
+    td,
+    table {
+        border-collapse: collapse;
+    }
+</style>
+
+</head>
+
+<body>
+    <p style="background:#9a0f1f; color:#fff; padding:3px; margin: 0;">Date:
+        <%= teamPdf.matchDate %>
+    </p>
+    <table class="table" border="0" style="margin-bottom:15px;">
+        <tr style="font-weight:700;">
+            <td>Match Name</td>
+            <td>Contest Name</td>
+            <td>Timing from</td>
+            <td>Time till</td>
+            <td>Contest Size</td>
+            <td>No. of Players Joined</td>
+            <td>Entry Amount</td>
+            <td>Total Collection in Escrow Acc</td>
+            <td>Platform Fees Deposited</td>
+            <td>Total Winning Amount</td>
+            <td>Total TDS</td>
+        </tr>
+        <tr>
+            <td>
+                <%= teamPdf.matchName %>
+            </td>
+            <td>
+                <%= teamPdf.contestName %>
+            </td>
+            <td>
+                <%= teamPdf.startTime %>
+            </td>
+            <td>
+                <%= teamPdf.endTime %>
+            </td>
+            <td>
+                <%= teamPdf.totalSlots %>
+            </td>
+            <td>
+                <%= teamPdf.totalTeamCount %>
+            </td>
+            <td>
+                <%= teamPdf.entryFee %>
+            </td>
+            <td>
+                <%= teamPdf.totalCollection %>
+            </td>
+            <td>
+                <%= teamPdf.totalFee %>
+            </td>
+            <td>
+                <%= teamPdf.totalWinning %>
+            </td>
+            <td>
+                <%= teamPdf.taxCollection %>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table" border="0">
+        <tr style="font-weight:700;">
+            <td>Name</td>
+            <td>Phone No</td>
+            <td>Email</td>
+            <td>Team</td>
+            <td>Rank</td>
+            <td>Points</td>
+            <td>Winning Amount</td>
+            <td>TDS Amount</td>
+            <td>Amount deposited in wallet</td>
+        </tr>
+        <% teamPdf.teams.forEach(team=> {%>
+            <tr>
+                <td>
+                    <%= team.playerId.name %>
+                </td>
+                <td>
+                    <%= team.playerId.phone %>
+                </td>
+                <td>
+                    <%= team.playerId.email %>
+                </td>
+                <td>
+                    <%= team.teamId.name %>
+                </td>
+                <td>
+                    <%= team.rank %>
+                </td>
+                <td>
+                    <%= team.teamId.points %>
+                </td>
+                <td>
+                    <%= team.assuredWinningAmount %>
+                </td>
+                <td>
+                    <%= (team.assuredWinningAmount - team.winningAmount) %>
+                </td>
+                <td>
+                    <%= team.winningAmount %>
+                </td>
+            </tr>
+            <% });%>
+    </table>
+</body>
+
+</html>
